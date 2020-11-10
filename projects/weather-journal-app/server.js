@@ -2,8 +2,12 @@
 projectData = {};
 
 // Require Express to run server and routes
-
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 // Start up an instance of app
+const app = express();
+const port = 3000;
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -11,9 +15,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
-
+app.use(cors());
 // Initialize the main project folder
-app.use(express.static('website'));
-
+app.use(express.static("website"));
 
 // Setup Server
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
+});
+// Return projectData
+app.get("/data", function (req, res) {
+  res.send(projectData);
+});
+// Add a new entry
+app.post("/newData", function (req, res) {
+  let newData = req.body;
+  let newEntry = {
+    temp: newData.temp,
+    date: newData.date,
+    response: newData.response,
+  };
+  key = Object.keys(projectData).length;
+  projectData[key] = newEntry;
+  res.send(projectData);
+});
