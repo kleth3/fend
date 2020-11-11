@@ -1,0 +1,32 @@
+@import "styles.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-three-wide {
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  justify-content: center;
+  grid-gap: 25px;
+}
+
+.grid-three-down {
+  display: grid;
+  grid-template-rows: 50px 50px 50px;
+  grid-gap: 25px;
+}
+
+.color-box {
+  width: 150px;
+  height: 150px;
+  border-radius: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lato";
+  font-size: 18px;
+}
