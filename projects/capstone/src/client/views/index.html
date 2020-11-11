@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Journal</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="holder headline">Weather Journal App</div>
+      <div class="holder zip">
+        <label for="zip">Enter City Here</label>
+        <input type="text" id="zip" placeholder="enter zip code here" />
+      </div>
+      <div class="holder zip">
+        <label for="cntry">Enter Country Here (optional)</label>
+        <input type="text" id="cntry" />
+      </div>
+      <div class="holder zip">
+        <label for="state">Enter State Here (optional)</label>
+        <input type="text" id="state" />
+      </div>
+      <div class="holder date">
+        <label for="date">Enter the start date here</label>
+        <input type="date" id="start" />
+
+      </div>
+      <div class="holder date">
+        <label for="date">Enter the end date here</label>
+        <input type="date" id="end" />
+        <div id="countdown"></div>
+      </div>
+      <div class="holder feel">
+        <button id="generate" type="submit">Generate</button>
+      </div>
+      <div class="holder entry">
+        <div class="title">Most Recent Entry</div>
+        <div id="entryHolder">
+          <div id="date"></div>
+          <div id="imgHolder"></div>
+          <div id="temp"></div>
+          <div id="content"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
