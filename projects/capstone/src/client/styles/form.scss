@@ -1,0 +1,89 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #d0d6d1;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+.holder{
+    height: 80%;
+    grid-area: frm;
+    // min-height: 100vh;
+}
+
+button{
+    font-family: "Lato";
+    font-size: 14px;
+    width: 10em;
+    height: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em;
+    color: #238db8;
+    background-color: white;
+    border: 4px solid #238db8;
+    &:hover {
+        font-weight: bold;
+        background-color: #238db8;
+        color: white;
+      }
+}
+
+textarea {
+    background:white;
+    font-size: 20px;
+    color: #3b403d;
+    border: 4px solid #3b403d;
+}
+
+input{
+    display:flex;
+    height: 80%;
+    width: 90%;
+    background: white;
+    border: 4px solid #3b403d  !important;
+    color: #3b403d;
+    font-size: 20px;
+    font-family: 'Lato';
+    border: none;
+    margin-bottom: 10px;
+    &.empty{
+        color: #238db8;
+    }
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: #238db8; 
+    font-family: 'Lato';
+    font-size: 0.75em;
+
+
+} 
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: #238db8; 
+    font-family: 'Lato';
+    font-size: 0.75em;
+
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+    color:#238db8; 
+    font-family: 'Lato';
+    font-size: 0.75em;
+
+} 

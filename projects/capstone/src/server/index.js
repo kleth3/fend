@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+var projectData = {};
 
 
 // Require Express to run server and routes
@@ -11,7 +11,6 @@ const fetch = require("node-fetch");
 dotenv.config();
 // Start up an instance of app
 const app = express();
-const port = 3000;
 
 /*Initialize Variables for external APIs*/
 const geonames_key = process.env.GEONAMES_KEY;
@@ -43,7 +42,7 @@ const pixabay_options = {
   method: "GET",
   credentials: "same-origin",
   hostname: `https://pixabay.com/api/`,
-  path: `?key=${pixabay_key}&image_type=photo&pretty=true&q=`
+  path: `?key=${pixabay_key}&category=places&image_type=photo&pretty=true&q=`
 };
 // functions for calling external APIs
 const callGeonames = async (fullPath="") => {
@@ -109,16 +108,6 @@ app.use(cors({
 // Initialize the main project folder
 app.use(express.static("dist"));
 
-// Setup Server
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
-
-// Home Route
-app.get("/", function (req, res){
-  res.sendFile("dist/index.html");
-});
-
 // Call geonames api
 app.post("/location", function (req, res) {
   console.log("Getting location data");
@@ -129,23 +118,30 @@ app.post("/location", function (req, res) {
   if(req.body.hasOwnProperty('country')){
     inLoc = `${inLoc} ${req.body.country}`;
   }
-  console.log(inLoc);
+  // console.log(inLoc);
   const txt = encodeURIComponent(inLoc);
   const fullPath = `${geonames_options.hostname}${txt}${geonames_options.path}`;
   // console.log(fullPath);
   newData = callGeonames(fullPath)
   .then(newData => {
+    // console.log(newData.geonames[0]);
     const entry = newData.geonames[0];
     let newEntry = {
       lat: entry.lat,
       lng: entry.lng,
       country: entry.countryName,
       state: entry.adminName1,
-      city: entry.name,
+      city: req.body.city,
     };
+    // console.log(newEntry);
     key = Object.keys(projectData).length;
     projectData[key] = newEntry;
+    // console.log(projectData[key]);
     res.send(projectData[key]);
+  })
+  .catch(err => {
+    res.send(err);
+    console.error(err);
   });
 });
 
@@ -166,12 +162,15 @@ app.post("/currentWeather", function (req, res) {
     projectData[key].weather = weatherData.weather;
     projectData[key].temp= weatherData.temp;
     res.send(projectData[key]);
+  }) 
+  .catch(err => {
+    res.send(err);
   });
 });
 
 // Get future weather data
 app.post("/futureWeather", function (req, res) {
-  console.log("Getting current weather");
+  console.log("Getting future weather");
   // console.log(req.body.days > 16);
   let days = req.body.days;
   if(req.body.days > 16 ){
@@ -193,6 +192,9 @@ app.post("/futureWeather", function (req, res) {
     projectData[key].hiTemp = weatherData.hiTemp;
     projectData[key].loTemp = weatherData.loTemp;
     res.send(projectData[key]);
+  })
+  .catch(err => {
+    res.send(err);
   });
 });
 
@@ -225,5 +227,10 @@ app.post("/picture", function (req, res) {
     }
     
     res.send(projectData[key]);
+  })
+  .catch(err => {
+    res.send(err);
   });
 });
+
+module.exports = app;

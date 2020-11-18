@@ -2,48 +2,46 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Weather Journal</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <title class="grey-font">Weather Journal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <header>
+      <h1>Travel Journal</h1>
+    </header>
     <div id="app">
-      <div class="holder headline">Weather Journal App</div>
       <div class="holder zip">
-        <label for="zip">Enter City Here</label>
-        <input type="text" id="zip" placeholder="enter zip code here" />
-      </div>
-      <div class="holder zip">
-        <label for="cntry">Enter Country Here (optional)</label>
-        <input type="text" id="cntry" />
-      </div>
-      <div class="holder zip">
-        <label for="state">Enter State Here (optional)</label>
-        <input type="text" id="state" />
-      </div>
-      <div class="holder date">
-        <label for="date">Enter the start date here</label>
-        <input type="date" id="start" />
+        <form>
+          <label for="zip">City</label>
+          <input type="text" id="zip" required="required" placeholder="enter city name here" />
 
+          <label for="cntry">Country (Optional)</label>
+          <input type="text" id="cntry" placeholder="enter country name here"  />
+      
+          <label for="state">State (Optional)</label>
+          <input type="text" id="state" placeholder="enter state name here" />
+     
+          <label for="date">Start Date</label>
+          <input type="date" id="start" required="required" class="empty"/>
+
+          <label for="date">End Date</label>
+          <input type="date" id="end" class="empty" />
+          <button id="generate" type="submit" required="required" class="blue-outline">Generate</button>
+        </form> 
       </div>
-      <div class="holder date">
-        <label for="date">Enter the end date here</label>
-        <input type="date" id="end" />
-        <div id="countdown"></div>
-      </div>
-      <div class="holder feel">
-        <button id="generate" type="submit">Generate</button>
-      </div>
-      <div class="holder entry">
-        <div class="title">Most Recent Entry</div>
-        <div id="entryHolder">
-          <div id="date"></div>
-          <div id="imgHolder"></div>
-          <div id="temp"></div>
-          <div id="content"></div>
+      <div class="outputHolder">
+        <div class="output">
+          <div id="title" class="title">Entry</div>
+          <div id="entryHolder" class="entry">
+            <div id="msg"></div>
+            <div id="countdown"></div>
+            
+            <div id="hiTemp"></div>
+            <div id="loTemp"></div>
+            <div id="forecast"></div>
+            <div id="length"></div>
+            <div id="imgHolder" class="flex-box-center"></div>
+          </div>
         </div>
       </div>
     </div>

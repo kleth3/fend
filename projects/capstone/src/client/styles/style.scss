@@ -1,111 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
 body{
     background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Playfair Display";
 }
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "frm out";
+    grid-template-columns: 50% 50%;
+    // height: 100vh;
+    background: white;
+    color: #3b403d;
+    // justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Lato";
+    grid-auto-rows: minmax(300px, auto) 
 }
 
-.holder{
-
-}
-
-.entry{
-    background: rgba(59, 74, 107, .4);
-}
-
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
+.output{
+    background-color: #d0d6d1;
+    display: grid;
+    grid-template-areas: 
+        "t"
+        "b";
+//    grid-template-rows: 10% 90%;
+   margin-right: 1em;
+   height: 100%;
+   min-height: 100%;
 
 }
 
-#content{
-
+.outputHolder{
+    grid-area: out;
+    // height: 80%
 }
 
-.headline {
-
+.title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    align-items: center;
+    grid-area: t;
+    margin-top: 1em;
 }
-.title{
 
+.entry {
+    grid-area: b;
+    margin-left: 1em;
+    line-height: 1.5em;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
+    margin-top: 0.5em;
     display:block;
-    font-size: 27px;
+    font-size: 1em;
 }
 
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
 
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
+img{
+    margin-bottom: 1em;
+    max-height: 20vh;
 }
-h1{
-    font-size: 36px;
-}
-
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
+.flex-box-center {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
+  @media (max-width: 1100px) {
+    #app{
+        grid-template-areas:
+            "frm"
+            "out";
+        grid-template-columns: 100%;
+        grid-template-rows: 80%;
+    }
+    img{
+        max-height: 20vh;
+    }
+    .output{
+        margin-right: 0;
+    }
+  }
