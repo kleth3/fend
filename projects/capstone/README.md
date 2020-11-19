@@ -9,3 +9,7 @@ For testing, you may need to change the dates on the sample inputs since the cou
 City name, start date, and end date are required inputs. Country and state are optional.
 
 The optional extension was adding an end date and displaying the length of the trip.
+
+To run, after cloning run npm i
+Then npm run build-prod
+Then npm start

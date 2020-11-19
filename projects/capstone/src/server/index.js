@@ -233,4 +233,4 @@ app.post("/picture", function (req, res) {
   });
 });
 
-module.exports = app;
+export {app};

@@ -14,16 +14,12 @@
         <form>
           <label for="zip">City</label>
           <input type="text" id="zip" required="required" placeholder="enter city name here" />
-
           <label for="cntry">Country (Optional)</label>
           <input type="text" id="cntry" placeholder="enter country name here"  />
-      
           <label for="state">State (Optional)</label>
           <input type="text" id="state" placeholder="enter state name here" />
-     
           <label for="date">Start Date</label>
           <input type="date" id="start" required="required" class="empty"/>
-
           <label for="date">End Date</label>
           <input type="date" id="end" class="empty" />
           <button id="generate" type="submit" required="required" class="blue-outline">Generate</button>
@@ -35,7 +31,6 @@
           <div id="entryHolder" class="entry">
             <div id="msg"></div>
             <div id="countdown"></div>
-            
             <div id="hiTemp"></div>
             <div id="loTemp"></div>
             <div id="forecast"></div>
@@ -45,5 +40,14 @@
         </div>
       </div>
     </div>
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/service-worker.js');
+          });
+      }
+     </script>
   </body>
 </html>

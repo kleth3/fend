@@ -1,4 +1,4 @@
-const app = require("./index");
+import {app} from "./index";
 
 // Setup Server
 const port = 3000;

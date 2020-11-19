@@ -5,6 +5,6 @@ describe("Testing countdown", () => {
         const inDate = new Date();
         const day = inDate.getDate();
         inDate.setDate(day + 1);
-        expect(getCountdown(inDate)).toEqual(2);
+        expect(getCountdown(inDate)).toEqual(1);
     })
 })
